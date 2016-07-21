@@ -1,0 +1,3 @@
+<gf-dropmenu>
+  <gf-menu *ngFor="let menu of menu" [title]="menu.title" [selected]="action" [items]="menu.items" [isToggleMod]="true" (onSelect)="onSelectChange($event)"></gf-menu>
+</gf-dropmenu>
