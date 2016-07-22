@@ -1,21 +1,16 @@
-<gf-dropmenu>
-  <gf-menu *ngFor="let menu of menu" [title]="menu.title" [selected]="action" [items]="menu.items" [isToggleMod]="true" (onSelect)="onSelectChange($event)"></gf-menu>
-</gf-dropmenu>
+<!--<gf-dropmenu>-->
+  <!--<gf-menu *ngFor="let menu of menu" [title]="menu.title" [selected]="action" [items]="menu.items" [isToggleMod]="true"-->
+           <!--(onSelect)="onSelectChange($event)"></gf-menu>-->
+<!--</gf-dropmenu>-->
 
 <ul class="game-list">
-  <li class="list-item">
-    <a class="img-link"><img src="http://design.zhscdo.com/UploadFiles/201679154019458.jpg" class="game-img"></a>
+  <li class="list-item" *ngFor="let game of games">
+    <a [href]="game.cover" class="img-link"><img [src]="game.link" class="game-img"></a>
     <div class="game-info">
-      <h1>CS雇佣兵</h1>
-      <span class="time">20元/10分钟</span>
-      <p>手持双枪干翻一波又一波敌军，100%的沉浸感，让你体验黑客帝国的子弹时间，让你体验双枪射击的快感</p>
-      <!--<span class="price"><i>¥</i>20.00</span>-->
+      <h1>{{game.name}}</h1>
+      <span class="time">{{game.time}}</span>
+      <p>{{game.desc}}</p>
+      <span class="price">{{game.price}}</span>
     </div>
-  </li>
-  <li class="list-item">
-
-  </li>
-  <li class="list-item">
-
   </li>
 </ul>

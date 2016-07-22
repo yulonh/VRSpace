@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DropmenuComponent} from 'gfui/index';
 import {MenuComponent} from 'gfui/index';
+import {GameService} from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -8,8 +9,12 @@ import {MenuComponent} from 'gfui/index';
   templateUrl: 'games.component.html',
   styleUrls: ['games.component.css'],
   directives: [DropmenuComponent, MenuComponent],
+  providers: [GameService]
 })
 export class GamesComponent implements OnInit {
+
+  games:any[];
+  errorMessage: string;
 
   menu:any[] = [
     {
@@ -88,14 +93,20 @@ export class GamesComponent implements OnInit {
   selectedValues:Object = {};
 
 
-  constructor() {
+  constructor(private gameService:GameService) {
   }
 
   ngOnInit() {
+    this.getGame();
+  }
+
+  getGame() {
+    return this.gameService.getGames().subscribe(games=>this.games = games, error => this.errorMessage = <any>error);
   }
 
   onSelectChange(e) {
     this.selectedValues[e.field] = e.value;
     console.log(this.selectedValues);
+    this.getGame();
   }
 }
