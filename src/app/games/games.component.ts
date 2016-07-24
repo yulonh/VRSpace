@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DropmenuComponent} from 'gfui/index';
 import {MenuComponent} from 'gfui/index';
-import {GameService} from '../shared';
+import {GameService, OrderByPipe} from '../shared';
 import {URLSearchParams} from '@angular/http';
 
 @Component({
@@ -10,7 +10,8 @@ import {URLSearchParams} from '@angular/http';
   templateUrl: 'games.component.html',
   styleUrls: ['games.component.css'],
   directives: [DropmenuComponent, MenuComponent],
-  providers: [GameService]
+  providers: [GameService],
+  pipes: [OrderByPipe]
 })
 export class GamesComponent implements OnInit {
 
@@ -55,19 +56,19 @@ export class GamesComponent implements OnInit {
       items: [
         {
           name: '时间从长到短',
-          value: 'time desc'
+          value: 'time DESC, popularity DESC'
         },
         {
           name: '时间短到长',
-          value: 'time asc'
+          value: 'time ASC, popularity DESC'
         },
         {
           name: '价格高到低',
-          value: 'price desc'
+          value: 'price DESC, popularity DESC'
         },
         {
           name: '价格低到高',
-          value: 'price asc'
+          value: 'price ASC, popularity DESC'
         }]
     }
     // {
@@ -99,6 +100,7 @@ export class GamesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedValues['order'] = 'popularity DESC';
     this.params.set('filter', JSON.stringify(this.selectedValues));
     this.getGame();
   }

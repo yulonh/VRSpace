@@ -6,12 +6,12 @@
 
 <ul class="game-list">
   <li class="list-item" *ngFor="let game of games">
-    <a [href]="game.cover" class="img-link"><img [src]="game.link" class="game-img"></a>
+    <a [href]="game.link" class="img-link"><img [src]="game.cover" class="game-img"></a>
     <div class="game-info">
       <h1>{{game.name}}</h1>
-      <span class="time">{{game.time}}</span>
+      <span class="time">{{game.time}}分钟</span>
       <p>{{game.desc}}</p>
-      <span class="price">{{game.price}}</span>
+      <span class="price">{{game.price}}元</span>
     </div>
   </li>
 </ul>
