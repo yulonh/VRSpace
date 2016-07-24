@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DropmenuComponent} from 'gfui/index';
 import {MenuComponent} from 'gfui/index';
 import {GameService} from '../shared';
+import {URLSearchParams} from '@angular/http';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ import {GameService} from '../shared';
 export class GamesComponent implements OnInit {
 
   games:any[];
-  errorMessage: string;
+  errorMessage:string;
 
   menu:any[] = [
     {
@@ -50,63 +51,69 @@ export class GamesComponent implements OnInit {
       ]
     },
     {
-      title: {name: '排序', value: 'sort'},
+      title: {name: '排序', value: 'order'},
       items: [
         {
           name: '时间从长到短',
-          value: 'timeDesc'
+          value: 'time desc'
         },
         {
           name: '时间短到长',
-          value: 'timeAsc'
+          value: 'time asc'
         },
         {
           name: '价格高到低',
-          value: 'priceDesc'
+          value: 'price desc'
         },
         {
           name: '价格低到高',
-          value: 'priceAsc'
-        }]
-    },
-    {
-      title: {
-        name: '适用人群',
-        value: 'people'
-      },
-      items: [
-        {
-          name: '儿童(3~10岁)',
-          value: 'children'
-        },
-        {
-          name: '学生(10~18岁)',
-          value: 'student'
-        },
-        {
-          name: '成人(18~45岁)',
-          value: 'adult'
+          value: 'price asc'
         }]
     }
+    // {
+    //   title: {
+    //     name: '适用人群',
+    //     value: 'people'
+    //   },
+    //   items: [
+    //     {
+    //       name: '儿童(3~10岁)',
+    //       value: 'children'
+    //     },
+    //     {
+    //       name: '学生(10~18岁)',
+    //       value: 'student'
+    //     },
+    //     {
+    //       name: '成人(18~45岁)',
+    //       value: 'adult'
+    //     }]
+    // }
   ];
 
-  selectedValues:Object = {};
+  selectedValues:Object = {where: {}};
+  params:URLSearchParams = new URLSearchParams();
 
 
   constructor(private gameService:GameService) {
   }
 
   ngOnInit() {
+    this.params.set('filter', JSON.stringify(this.selectedValues));
     this.getGame();
   }
 
   getGame() {
-    return this.gameService.getGames().subscribe(games=>this.games = games, error => this.errorMessage = <any>error);
+    return this.gameService.getGames(this.params).subscribe(games=>this.games = games, error => this.errorMessage = <any>error);
   }
 
   onSelectChange(e) {
-    this.selectedValues[e.field] = e.value;
-    console.log(this.selectedValues);
+    if (e.field !== 'order') {
+      this.selectedValues['where'][e.field] = e.value;
+    } else {
+      this.selectedValues[e.field] = e.value;
+    }
+    this.params.set('filter', JSON.stringify(this.selectedValues));
     this.getGame();
   }
 }

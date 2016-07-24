@@ -1,7 +1,8 @@
-<!--<gf-dropmenu>-->
-  <!--<gf-menu *ngFor="let menu of menu" [title]="menu.title" [selected]="action" [items]="menu.items" [isToggleMod]="true"-->
-           <!--(onSelect)="onSelectChange($event)"></gf-menu>-->
-<!--</gf-dropmenu>-->
+<gf-dropmenu>
+  <gf-menu *ngFor="let menu of menu" [title]="menu.title"
+           [items]="menu.items" [isToggleMod]="true"
+           (onSelect)="onSelectChange($event)"></gf-menu>
+</gf-dropmenu>
 
 <ul class="game-list">
   <li class="list-item" *ngFor="let game of games">

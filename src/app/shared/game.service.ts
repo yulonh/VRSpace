@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import {URLSearchParams} from '@angular/http';
 
 const contact_url = `http://yulonh.com:3000/api/Games`;
 
@@ -9,8 +10,8 @@ export class GameService {
   constructor(private _http:Http) {
   }
 
-  getGames():Observable<any[]> {
-    return this._http.get(contact_url)
+  getGames(params:URLSearchParams):Observable<any[]> {
+    return this._http.get(contact_url, {search: params})
       .map(this.extractData)
       .catch(this.handleError);
   }
