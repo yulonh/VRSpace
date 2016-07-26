@@ -1,0 +1,255 @@
+//抽取公共的颜色值
+.color-red{
+    color:$bRed;
+}
+.color-orange{
+    color:$bOrange;
+}
+.color-grey9{
+    color: $grey9;
+}
+.color-grey6{
+    color: $grey6;
+}
+
+
+//抽取的背景颜色
+.ui-bg-purple {
+    background-color: $purple;
+}
+.ui-bg-white {
+    background-color: #fff;
+}
+
+
+.ui-circle {
+    border-radius: 100%;
+    width: $common-width-s;
+    height: $common-width-s;
+    text-align: center;
+    background-color: $fRed;
+}
+
+.ui-circle-s {
+    width: $circle-width-s;
+    height: $circle-width-s;
+}
+
+/*.gf-arrow-r {
+    @include gf-arrow-r;
+}*/
+/*--------------padding---------------*/
+.gf-padding {
+    padding: $wrap-padding;
+}
+.gf-padding-tb{
+    padding: $wrap-padding 0;
+}
+.gf-padding-lr{
+    padding: 0 $wrap-padding;
+}
+
+.gf-padding-s {
+    padding: $wrap-padding-s;
+}
+.gf-padding-s-tb{
+    padding: $wrap-padding-s 0;
+}
+.gf-padding-s-lr{
+    padding: 0 $wrap-padding-s;
+}
+
+//单行省略号
+.gf-single-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+//多行省略号
+.gf-twoLine-ellipsis {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    padding: 0;
+    word-break: break-all;
+    /*white-space: nowrap;*/
+}
+
+.gf-whitespace{
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.ui-text-right {
+    text-align: right;
+}
+
+.ui-text-center {
+    text-align: center;
+}
+
+/*.ui-text-common {
+    color: $fGrey2;
+}*/
+
+.info-margin {
+    margin-top: 58px;
+}
+
+//border
+.gf-border-tb{
+    @include gf-border-tb;
+}
+.gf-border-t{
+    @include gf-border-t;
+}
+.gf-border-r{
+    @include gf-border-r;
+}
+.gf-border-l{
+    @include gf-border-l;
+}
+.gf-border-b{
+    @include gf-border-b;
+}
+.gf-border{
+    @include gf-border;
+}
+.gf-border-radius{
+    @include gf-border-radius;
+}
+.gf-border-t,.gf-border-r,.gf-border-l,.gf-border-b,.gf-border-tb{
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+        border: 0;
+    }
+
+}
+
+
+/*--------------------标签-------------------*/
+.gf-tag {
+    @include gf-tag;
+    vertical-align: text-top;
+    margin: 0 2px;
+}
+.tag-yin {
+    background-color: $red;
+}
+//投顾标志
+.tag-tgu {
+    background-color: $cBlue;
+}
+.tag-num{
+    @include gf-tag($red2,10px,1px,5px);
+}
+//带框白底标签 默认蓝色
+.gf-tag-line{
+    @include gf-tag-line;
+    margin: 0 2px;
+    vertical-align:text-bottom;
+}
+
+.icon-warn{
+    @include sprite($toast-warn);
+    display: inline-block;
+    margin-right: 10px;
+}
+/*------------------红点-------------------*/
+.gf-reddot {
+    display: inline-block;
+    position: relative;
+    //padding: 0 5px;
+    &:after{
+        display: block;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        background-clip: padding-box;
+        background-color: #cf2a2a;
+        content: '';
+    }
+}
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+
+
+.icon-padding-b{
+    padding-bottom: $wrap-padding-s/2;
+}
+/*----------字体大小-font-size-------------*/
+
+.font11{
+    font-size:11px;
+}
+.font12{
+    font-size:$fSize0;
+}
+.font13{
+    font-size:$fSize1;
+}
+.font14 {
+    font-size:$fSize4;
+}
+.font16 {
+    font-size:$fSize3;
+}
+
+
+/*----------字体颜色font color-------------*/
+.grey6{
+    color: $grey6;
+}
+.grey9{
+    color: $grey9;
+}
+.red5{
+    color:#ec5f2a;
+}
+
+/*-----------通用图形-----------*/
+.gf-arrow-r {
+  position: relative;
+  &:before{
+    @include sprite($arr-right);
+    background-image: url('http://cdndev.gf.com.cn/gfwealth/common/gfui/assets/images/sprite-gfui.png');
+    position:absolute;
+    right: $wrap-margin;
+    top: 50%;
+    width: 12px;
+    height: 20px;
+    margin-top: -10px;
+    margin-right: -5px;
+    content:'';
+    @media (max-width: 320px) {
+      right: $wrap-margin-s;
+    }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 190dpi) {
+      background-image: url('http://cdndev.gf.com.cn/gfwealth/common/gfui/assets/images/sprite-gfui@2x.png');
+      background-size: 69px 53px;
+    }
+  }
+}
+
+/*向下的三角*/
+.gf-triangle-down{
+    content: "";
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-top: 0.08rem solid #666;
+    border-left: 0.06rem solid transparent;
+    border-right: 0.06rem solid transparent;
+    border-bottom: 0;
+    margin-left: 0.05rem;
+}

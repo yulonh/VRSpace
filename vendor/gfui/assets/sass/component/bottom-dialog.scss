@@ -1,0 +1,55 @@
+.gf-bottom-dialog {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+
+    width: 100%;
+    font-size: $fs4;
+    text-align: center;
+    line-height: .45rem;
+    @extend .gf-font-big-content;
+    >div, a, p,button{
+        @include gf-border-t;
+    }
+    a{
+        display: block;
+        height: .45rem;
+        color: $fBlue;
+    }
+    p{
+        text-align: left;
+    }
+    span{
+        font-size: $fs2;
+        color: $grey9;
+    }
+    button{
+        //border-top: 1px $grey0 solid;
+
+        width: 100%;
+        height: .45rem;
+
+        color: #ccc;
+    }
+    i{
+        margin: 0 .1rem 0 .15rem;
+    }
+
+    .icon-gfui-del{
+        @include sprite($del);
+        display: inline-block;
+
+        position: absolute;
+        top: .15rem;
+        left: 0;
+
+        width: 12px;
+        height: 12px;
+        transform: scale(1.2);
+    }
+    .icon-favor{
+        @include sprite($fav-active);
+        display: inline-block;
+    }
+}

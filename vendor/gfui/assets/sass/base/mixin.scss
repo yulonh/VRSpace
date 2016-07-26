@@ -1,0 +1,171 @@
+@mixin gf-img($width:100%){
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+@mixin gf-circle-container($background-color: $cBlue, $size: $circle-width){
+    @include gf-img;
+    border-radius: 100%;
+    width: $size;
+    height: $size;
+
+    text-align: center;
+    background-color: $background-color;
+}
+
+//固定方向，可改颜色的细线
+@mixin gf-border-t($border-color:$grey0){
+    border-top: 1px solid $border-color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+        position: relative;
+        border: 0;
+        &:before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            //background-color: $border-color;
+            transform: scale(1,.5);
+            transform-origin:0 0;
+            content: '';
+            border-top:1px solid $border-color;
+        }
+    }
+}
+@mixin gf-border-b($border-color:$grey0){
+    border-bottom: 1px solid $border-color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+        position: relative;
+        border: 0;
+        &:after{
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            //background-color: $border-color;
+            transform: scale(1,.5);
+            transform-origin:0 0;
+            content: '';
+            border-bottom:1px solid $border-color;
+        }
+    }
+}
+@mixin gf-border-l($border-color:$grey0){
+    border-left: 1px solid $border-color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+        position: relative;
+        border: 0;
+        &:before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            //background-color: $border-color;
+            transform: scale(.5,1);
+            transform-origin:0 0;
+            content: '';
+            border-left:1px solid $border-color;
+        }
+    }
+}
+@mixin gf-border-r($border-color:$grey0){
+    border-right: 1px solid $border-color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        position: relative;
+        border: 0;
+        &:before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            //background-color: $border-color;
+            transform: scale(.5, 1);
+            transform-origin: 0 0;
+            content: '';
+            border-right:1px solid $border-color;
+            z-index: 1;
+        }
+    }
+}
+//只有上下框
+@mixin gf-border-tb($border-color:$grey0){
+    @include gf-border-t($border-color);
+    @include gf-border-b($border-color);
+}
+//只有左右框
+@mixin gf-border-lf($border-color:$grey0){
+    @include gf-border-l($border-color);
+    @include gf-border-r($border-color);
+}
+
+@mixin gf-border($border-color:$grey0){
+    border: 1px solid $border-color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+        position: relative;
+        border: 0;
+        &:before{
+            border: 1px solid $border-color;
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(.5);
+            transform-origin:0 0;
+            pointer-events: none;
+            content: '';
+        }
+    }
+}
+@mixin gf-border-radius($border-color:$grey0,$border-radius:4px){
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        position: relative;
+        border: 0;
+        &:before {
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(.5);
+            pointer-events: none;
+            transform-origin: 0 0;
+            content: '';
+        }
+    }
+}
+
+/*-----------------标签--------------------*/
+@mixin gf-tag( $background-color: $red , $border-radius: 2px, $padding-tb: 1px, $padding-lr: 2px, $font-size: $fs8){
+    color: #fff;
+    //vertical-align: 1px;
+    display: inline-block;
+    border-radius: $border-radius;
+    padding: $padding-tb $padding-lr;
+    height: $fs4;
+    text-align: center;
+    line-height: $fs4;
+    font-size: $fs8;
+    background-color: $background-color;
+}
+@mixin gf-tag-line( $color: $blue, $border-radius: 2px, $padding-tb: 1px, $padding-lr: 2px, $font-size: $fs8){
+    color: $color;
+    display: inline-block;
+    border-radius: $border-radius;
+    border: 1px solid $color;
+    padding: $padding-tb $padding-lr;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    font-size: $fs8;
+}
+
+
+

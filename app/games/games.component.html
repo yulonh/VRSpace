@@ -1,0 +1,17 @@
+<gf-dropmenu>
+  <gf-menu *ngFor="let menu of menu" [title]="menu.title"
+           [items]="menu.items" [isToggleMod]="true"
+           (onSelect)="onSelectChange($event)"></gf-menu>
+</gf-dropmenu>
+
+<ul class="game-list">
+  <li class="list-item" *ngFor="let game of games">
+    <a [href]="game.link" class="img-link"><img [src]="game.cover" class="game-img"></a>
+    <div class="game-info">
+      <h1>{{game.name}}</h1>
+      <span class="time">{{game.time}}分钟</span>
+      <p>{{game.desc}}</p>
+      <span class="price">{{game.price}}元</span>
+    </div>
+  </li>
+</ul>

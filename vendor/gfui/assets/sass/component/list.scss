@@ -1,0 +1,148 @@
+.gf-list {
+    background-color: #fff;
+    width: 100%;
+    &.no-padding li {
+        padding: 0;
+    }
+    > li {
+        position: relative;
+        display: -webkit-box;
+        padding: $wrap-padding;
+    }
+}
+
+.gf-list-pure > li {
+    display: block;
+}
+
+//附加样式
+.gf-list-border-b  > li {
+    @include gf-border-b;
+}
+
+.gf-list-noBottom > li {
+    &:nth-last-child(1) {
+        border-bottom: 0;
+    }
+}
+
+//左右
+.gf-list-lr > li {
+    .gf-list-txt {
+        flex: 2;
+    }
+    .gf-list-pic {
+        flex: 1;
+        img {
+            @include gf-img;
+        }
+    }
+}
+
+.gf-list-horizon, .gf-list-tab {
+    display: flex;
+    > li {
+        float: left;
+        flex: 1;
+    }
+}
+
+.gf-list-tab {
+    height: .45rem;
+    line-height: .43rem;
+    > li {
+        -webkit-box-pack: center;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        > a {
+            @extend .gf-font-tab-title;
+            display: inline-block;
+            padding: 0 5px;
+        }
+    }
+
+    .active {
+        border-bottom: 2px $blue solid;
+        color: $blue;
+    }
+}
+
+//水平垂直居中
+.gf-list-center > li {
+    @extend .gf-center;
+}
+
+//带右箭头
+.gf-list-link > li{
+    @extend .gf-arrow-r;
+}
+
+  //带右三角图标
+  .gf-list-dropdown {
+    > li:after {
+      @extend .gf-triangle-down
+    }
+    > li.active:after {
+      border-top: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 8px solid #217de4;
+      margin-bottom: 0;
+      color: #217de4 !important;
+    }
+  }
+
+  //上下结构 业务关联较多
+  .gf-list-flex > li {
+    .flex {
+      padding-top: $wrap-padding-s;
+      display: flex;
+      > div {
+        flex: 1;
+        color: $grey9;
+      }
+      img {
+        @include gf-img;
+      }
+    }
+  }
+
+  .gf-list-new > li,
+  .gf-list-flex > li {
+    display: flex;
+    flex-direction: column;
+    //display: -webkit-box;
+    //-webkit-box-orient: vertical;
+    .tap-hold {
+      width: 100%;
+      box-sizing: border-box;
+      display: block;
+    }
+    h3 {
+      color: #000;
+      margin-bottom: $wrap-padding-s;
+    }
+
+    .no-padding {
+      padding: 0;
+    }
+    .gf-list-new-info {
+      color: $grey6;
+      padding-top: $wrap-padding-s;
+    }
+  }
+
+.gf-list-congar{
+  box-sizing: border-box;
+  >li{
+    display: inline-block;
+    width: 50%;
+  }
+  >li:nth-child(2n+1){
+    @extend .gf-border-r;
+  }
+}
+
+
+
