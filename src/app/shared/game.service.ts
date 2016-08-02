@@ -3,7 +3,7 @@ import {Http, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {URLSearchParams} from '@angular/http';
 
-const contact_url = `http://yulonh.com:3000/api/Games`;
+const contact_url = `/api/games`;
 
 @Injectable()
 export class GameService {

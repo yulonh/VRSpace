@@ -26,12 +26,16 @@ export class GamesComponent implements OnInit {
       },
       items: [
         {
-          name: '动作',
-          value: 'action'
+          name: '全部',
+          value: undefined
         },
         {
           name: '射击',
           value: 'shooting'
+        },
+        {
+          name: '动作',
+          value: 'action'
         },
         {
           name: '竞速',
@@ -55,7 +59,7 @@ export class GamesComponent implements OnInit {
       title: {name: '排序', value: 'order'},
       items: [
         {
-          name: '时间从长到短',
+          name: '时间长到短',
           value: 'time DESC, popularity DESC'
         },
         {
@@ -91,6 +95,7 @@ export class GamesComponent implements OnInit {
     //     }]
     // }
   ];
+
 
   selectedValues:Object = {where: {}};
   params:URLSearchParams = new URLSearchParams();
